@@ -10,3 +10,7 @@
   --color-primary: #666666;
   --color-theme: #F5F5F5;
 }
+.slick-dots .slick-active div{
+  @apply h-1 w-2 md:h-2.5 md:w-5 
+  
+}

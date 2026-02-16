@@ -128,7 +128,7 @@ const Navbar = () => {
                         <input type="text" placeholder='Search essentials, groceries and more...' className='w-full outline-0' />
                     </div>
                     <div className='flex items-center gap-10'>
-                        <Link className='hidden md:flex md-w-full justify-between items-center font-bold text-[10px] lg:text-base gap-5 lg:gap-1.5 relative lg:after:absolute lg:after:h-full lg:after:w-0.5 lg:after:bg-primary lg:after:top-0 lg:after:-right-5'> <LuUser className='text-brand text-2xl lg:text-xl' /> Sign Up / Sign In</Link>
+                        <Link className='hidden md:flex md-w-full  items-center font-bold text-[10px] lg:text-base gap-5 lg:gap-1.5 relative lg:after:absolute lg:after:h-full lg:after:w-0.5 lg:after:bg-primary lg:after:top-0 lg:after:-right-5'> <LuUser className='text-brand text-2xl lg:text-xl' /> Sign Up / Sign In</Link>
                         <Link className='flex items-center font-bold text-base gap-1.5'> <IoCartOutline className='text-brand text-xl' /><span className='hidden md:block'>Cart</span></Link>
 
                     </div>
