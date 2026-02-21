@@ -24,7 +24,7 @@ function MidSlider() {
   };
   return (
 
-       <section>
+       <section className='mt-30'>
         <div className="container">
           <Heading
           title="Top"

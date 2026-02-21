@@ -199,6 +199,7 @@ const Navbar = () => {
                                         </ul>
                                     </li>
                                 ))}
+                            
                         </ul>
                         <Link className='bg-brand/20 inline-block mt-5 border-t-2 border-secondary/50 md:flex items-center text-black rounded-3xl px-5 py-2 font-bold text-base gap-1.5 relative after:absolute after:h-full after:w-0.5 after:bg-primary after:top-0 after:-right-5'> <LuUser className='text-black font-bold text-2xl' />Sign Up / Sign In</Link>
                     </div>
