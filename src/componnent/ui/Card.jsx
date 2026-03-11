@@ -14,10 +14,10 @@ const Card = () => {
                     <p className='font-bold text-base'>₹32999</p>
                     <p className=' line-through'>₹74999</p>
                 </div>
-                <div className='flex justify-between items-center pt-3'>
+                <div className='space-y-2 m-auto sm:flex sm:justify-between sm:items-center sm:pt-3'>
                     <p className=' font-semibold text-base text-[#249B3E]'>Save - ₹32999</p>
                     <Link to="/" className='flex items-center gap-1.5 bg-brand text-theme font-semibold p-1.5 rounded-2xl hover:bg-brand/20 hover:text-black'>
-                    <IoCartOutline className='font-semibold text-2xl'/> 
+                    <IoCartOutline className='text-lg font-medium sm:font-semibold sm:text-2xl'/> 
                     Add to Cart</Link>
 
                 </div>

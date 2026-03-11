@@ -37,11 +37,11 @@ const Catagories = () => {
     <section>
       <div className="container">
         <Heading title="Shop From" highlight="Top Categories"/>
-        <div className='grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7'>
+        <div className='grid gap-x-2.5 grid-cols-3 md:grid-cols-5 lg:grid-cols-7'>
             {
                catagory.map((items)=>(
                 <div key={items.title} className='mt-10 flex flex-col items-center'>
-            <div className='bg-theme flex justify-center items-center w-32 h-32 rounded-full hover:shadow-2xl hover:border-2 hover:border-brand'>
+            <div className='bg-theme flex justify-center items-center w-28 h-28 sm:w-32 sm:h-32 rounded-full hover:shadow-2xl hover:border-2 hover:border-brand'>
                 <img src={items.src} alt="phone" className='w-auto h-auto max-w-4/5 max-h-4/5'/>
             </div>
             <div className='mt-5 text-base font-medium font-primary'>
