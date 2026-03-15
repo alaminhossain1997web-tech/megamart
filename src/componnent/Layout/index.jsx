@@ -5,8 +5,12 @@ import Navbar from './Navbar'
 const Layout = () => {
   return (
     <>
-    <Navbar/>
-    <Outlet/>
+    <div className='fixed z-50 w-full bg-white'>
+      <Navbar/>
+    </div>
+    <div className='pt-44'>
+      <Outlet/>
+    </div>
     </>
   )
 }
