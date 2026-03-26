@@ -5,6 +5,7 @@ import MidSlider from '../componnent/ui/MidSlider'
 import DailyEssentials from '../componnent/ui/DailyEssentials'
 import Catagories from '../componnent/Home/Catagories'
 import Footer from '../componnent/Layout/footer'
+import Gadget from '../componnent/ui/Gadget'
 
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
     <Catagories/>
     <MidSlider/>
     <DailyEssentials/>
+    <Gadget/>
     <Footer/>
     </>
   )

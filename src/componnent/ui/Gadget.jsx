@@ -4,13 +4,13 @@ import { useGetProductsQuery } from '../../Services/api';
 import { Link } from 'react-router';
 import { MdAttachMoney, MdOutlineStarBorder } from 'react-icons/md';
 import { IoCartOutline } from 'react-icons/io5';
-import Loding from './Loding';
 import Card from './Card';
+import Loding from './Loding';
 
-const DailyEssentials = () => {
+const Gadget = () => {
    const { data, isError, isLoading } = useGetProductsQuery({
       limit: 6,
-      category: "beauty",
+      category: "laptops",
     });
     console.log(data);
     
@@ -18,11 +18,11 @@ const DailyEssentials = () => {
     <section className='py-20'>
       <div className="container">
         <Heading
-          title="Daily"
-          highlight="Beauty Products"
+          title=" Hot Electronics"
+          highlight="Device"
           afterwidth="after:w-42" />
 
-        {isLoading ? (
+          {isLoading ? (
           <Loding />
         ) 
         :
@@ -39,4 +39,4 @@ const DailyEssentials = () => {
   )
 }
 
-export default DailyEssentials
+export default Gadget
