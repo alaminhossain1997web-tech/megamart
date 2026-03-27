@@ -9,7 +9,8 @@ const Productlist = () => {
   const category = SearchParams.get("category")
    const [skip,setSkip] = useState(0);
   const [limit,setLimit] = useState(20)
-  const { data, isError, error, isLoading } = useGetProductsQuery({limit,skip,category});
+  const { data, isError, isLoading } = useGetProductsQuery({limit,skip,category});
+  const products = data?.products ?? [];
 
   return (
     <section className='py-25'>
@@ -30,11 +31,13 @@ const Productlist = () => {
         </div>
         {isLoading ? (
           <Loding />
-        ) 
-        :
-        (
+        ) : isError ? (
+          <p className='rounded-2xl bg-red-50 px-4 py-3 text-sm text-red-600'>
+            Products could not be loaded right now.
+          </p>
+        ) : (
           <div className='grid grid-cols-2 sm:grid-cols-5 gap-6'>
-            {data.products?.map((item) => (
+            {products.map((item) => (
               <Card key={item.id} product={item} />
             ))}
           </div>

@@ -43,9 +43,6 @@ const Footer = () => {
             </div>
           </div>
 
-
-
-
           <div  className='mt-5 mb-5 sm:ml-5 md:mt-0 md:mb-0'>
             <div className=' text-theme font-medium text-xl border-theme border-b-2 w-fit pb-3'>
               <h3>Most Popular Categories</h3>
@@ -63,12 +60,6 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-
-
-
-
-
-
 
           <div  className='mt-5 mb-5 sm:ml-5 md:mt-0 md:mb-0'>
             <div className=' text-theme font-medium text-xl border-theme border-b-2 w-fit pb-3'>

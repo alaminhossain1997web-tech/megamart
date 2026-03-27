@@ -90,7 +90,7 @@ const Signup = () => {
         <div className='px-8 py-4 bg-white text-center '>
           <span className='text-black'>Don't have an account? </span>
           <Link
-            to='/Login'
+            to='/login'
             className='font-medium text-indigo-700 hover:text-indigo-400'>
             {" "}
             Sign In

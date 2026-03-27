@@ -1,16 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
-import { TbCurrencyTaka, TbMapX } from "react-icons/tb";
+import { TbCurrencyTaka } from "react-icons/tb";
 import Slider from "react-slick";
 import { useGetproductdetailsQuery } from "../Services/api";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
+import { IoCartOutline } from "react-icons/io5";
+import Loding from "../componnent/ui/Loding";
+import { useCart } from "../Services/cart.jsx";
 
 const Productdetails = () => {
   const { id } = useParams();
-  const { data, isLoading } = useGetproductdetailsQuery(id);
+  const { data, isLoading, isError } = useGetproductdetailsQuery(id);
   const [nav1, setNav1] = useState(null);
   const [nav2, setNav2] = useState(null);
   let sliderRef1 = useRef(null);
   let sliderRef2 = useRef(null);
+  const { addItem } = useCart();
 
   useEffect(() => {
     setNav1(sliderRef1);
@@ -31,16 +35,30 @@ const Productdetails = () => {
   const increase = () => {
     setCount(count + 1);
   };
-  console.log(data);
+
+  if (isLoading) {
+    return <Loding />;
+  }
+
+  if (isError || !data) {
+    return (
+      <section className='py-10'>
+        <div className='container'>
+          <div className='rounded-3xl bg-red-50 px-6 py-5 text-red-600'>
+            Product details could not be loaded right now.
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className='py-10'>
       <div className='container'>
-        <div className='grid grid-cols-1 sm:grid-cols-2'>
+        <div className='grid grid-cols-1 gap-8 lg:grid-cols-2'>
           {/* left slider */}
           <div className='border bordr-primary/30 rounded-2xl'>
-            <div className='bg-secondary flex justify-center items center border border-primary/30 rounded-2xl'>
-              {/*first slider div*/}
+            <div className='bg-secondary flex justify-center items center border border-primary/30 rounded-2xl'>{/*first slider div*/}
               <Slider
                 {...settings}
                 asNavFor={nav2}
@@ -71,30 +89,29 @@ const Productdetails = () => {
                 ))}
               </Slider>
             </div>
-          </div>
-          {/*slider main div*/}
+          </div>{/*slider main div*/}
 
           {/* product discription col */}
-          <div className='p-5'>
-            {/*main div*/}
+          <div className='p-5'>{/*main div*/}
             <h1 className='text-2xl lg:text-3xl font-semibold text-gray-900 '>
-              {data?.title}
+              {data.title}
             </h1>
-            <div className='grid grid-cols-1 sm:grid-cols-3 w-full my-1 sm:my-2'>
+            <div className='grid grid-cols-1 gap-2 sm:grid-cols-3 w-full my-3'>
               <p className='font-semibold flex items-center gap-1'>
-                <TbCurrencyTaka className='text-xl' /> {data?.price}
+                <TbCurrencyTaka className='text-xl' /> {data.price}
                 <span className='font-normal text-base text-primary/50'>
                   (Cash price)
                 </span>
               </p>
               <p className='font-semibold '>
                 Availability:{" "}
-                <span className='text-base font-normal'> {data?.stock}</span>
+                <span className='text-base font-normal'> {data.stock}</span>
               </p>
               <p className='font-semibold'>
-                Brand: <span className='text-base font-normal'>{data?.brand}</span>
+                Brand: <span className='text-base font-normal'>{data.brand}</span>
               </p>
             </div>
+            <p className='text-base leading-7 text-gray-600'>{data.description}</p>
             <div className='border border-primary/30 p-4 rounded-2xl w-full my-5'>
               <p className='font-medium'>Verient:</p>
               <div className='sm:flex sm:items-center sm:flex-cols-3 gap-5'>
@@ -137,9 +154,22 @@ const Productdetails = () => {
                   +
                 </button>
               </div>
+              <div className='mt-5 flex flex-col gap-3 sm:flex-row'>
+                <button
+                  type='button'
+                  onClick={() => addItem(data, count)}
+                  className='inline-flex items-center justify-center gap-2 rounded-2xl bg-brand px-6 py-3 font-semibold text-white transition hover:bg-brand/85'>
+                  <IoCartOutline className='text-xl' />
+                  Add {count} to Cart
+                </button>
+                <Link
+                  to='/sopingcart'
+                  className='inline-flex items-center justify-center rounded-2xl border border-brand px-6 py-3 font-semibold text-brand transition hover:bg-brand hover:text-white'>
+                  View Cart
+                </Link>
+              </div>
             </div>
-          </div>
-          {/* 2nd col main div*/}
+          </div>{/* 2nd col main div*/}
         </div>
         <div className='py-10'>
           <h2 className='text-2xl lg:text-3xl font-semibold text-gray-900 my-5'>
@@ -189,14 +219,12 @@ const Productdetails = () => {
                   <td className='w-1/3 border border-gray-300 px-4 py-2'>
                     Return Policy: {data?.returnPolicy}
                   </td>
-                </tr>
-                
+                </tr>                
               </tbody>
             </table>
           </div>
         </div>
-      </div>
-      {/* container */}
+      </div> {/* container */}
     </section>
   );
 };

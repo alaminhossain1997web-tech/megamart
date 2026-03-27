@@ -4,9 +4,12 @@ import './index.css'
 import App from './App.jsx'
 import { ApiProvider } from '@reduxjs/toolkit/query/react'
 import { API } from './Services/api.js'
+import { CartProvider } from './Services/cart.jsx'
 
 createRoot(document.getElementById('root')).render(
   <ApiProvider api ={API}>
-    <App />
+    <CartProvider>
+      <App />
+    </CartProvider>
   </ApiProvider>,
 )
